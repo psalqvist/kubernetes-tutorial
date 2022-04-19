@@ -1,0 +1,23 @@
+# configuration for deployment of container to kubernetes
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-tutorial-deployment
+  labels:
+    app: kubernetes-tutorial
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubernetes-tutorial
+  template:
+    metadata:
+      labels:
+        app: kubernetes-tutorial 
+    spec:
+      containers:
+      - name: nodeserver
+        image: psalqvist/kubernetes-tutorial:latest
+        ports:
+        - containerPort: 3000

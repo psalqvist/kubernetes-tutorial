@@ -1,0 +1,15 @@
+# expose backend using load balancer
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-tutorial-service
+spec:
+  selector:
+    app: kubernetes-tutorial 
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 3000
+    nodePort: 31110
